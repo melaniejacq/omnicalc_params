@@ -116,12 +116,19 @@ class CalculationsController < ApplicationController
   end
 
   def random_form
+      render("calculations/random_form_template.html.erb")
+  end 
+    
+  def process_random_form 
     
     @min = params[:min].to_i
     @max = params[:max].to_i
     @range = @max - @min
     @random_number = (@min) + rand(@range)
-    
-    render("calculations/random_form_template.html.erb")
+  
+      render("calculations/flex_random_template.html.erb")
   end
-end
+  
+    
+    render("calculations/process_random_form_template.html.erb")
+  end
