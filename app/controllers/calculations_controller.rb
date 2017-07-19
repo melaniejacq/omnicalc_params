@@ -16,9 +16,9 @@ class CalculationsController < ApplicationController
   
   def flex_square_root
 
-    @user_number = params[:number].to_i
-    @squared_rootnumber = @user_number**0.05
-    
+    @user_number = params[:number].to_f
+    @squared_rootnumber = Math.sqrt(@user_number)
+
     render("calculations/flex_square_root_template.html.erb")
     
   end
@@ -30,7 +30,7 @@ class CalculationsController < ApplicationController
       @years = params[:number_of_years].to_i
       @P = params[:present_value].to_f
     
-      @r = @basis_points/(12*10000)
+      @r = @basis_points/(12*100)
       @N = @years*12
     
       @payment = @r*@P/(1-(1+@r)**(-@N))
@@ -41,9 +41,10 @@ class CalculationsController < ApplicationController
   
   def random
   
-    @min = params[:number].to_i
-    @max = params[:number].to_i
-    @random_number = rand (@min.. @max)
+    @min = params[:min].to_i
+    @max = params[:max].to_i
+    @range = @max - @min
+    @random_number = (@min) + rand(@range)
   
       render("calculations/flex_random_template.html.erb")
   end
@@ -74,8 +75,8 @@ class CalculationsController < ApplicationController
   
   def process_square_root_form
 
-    @the_number = params["the_user_number"].to_i
-    @the_square_root = @the_number**0.05
+    @user_number = params[:the_user_number].to_f
+    @the_square_root = Math.sqrt(@user_number)
 
     render("calculations/process_square_root_form_template.html.erb")
   end
@@ -91,7 +92,7 @@ class CalculationsController < ApplicationController
       @years = params[:number_of_years].to_i
       @P = params[:present_value].to_f
     
-      @r = @basis_points/(12*10000)
+      @r = @basis_points/(12*100)
       @N = @years*12
     
       @payment = @r*@P/(1-(1+@r)**(-@N))
@@ -116,9 +117,10 @@ class CalculationsController < ApplicationController
 
   def random_form
     
-    @min = params[:number].to_i
-    @max = params[:number].to_i
-    @random_number = rand (@min.. @max)
+    @min = params[:min].to_i
+    @max = params[:max].to_i
+    @range = @max - @min
+    @random_number = (@min) + rand(@range)
     
     render("calculations/random_form_template.html.erb")
   end

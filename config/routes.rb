@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get("/payment/new",     { :controller => "calculations", :action => "payment_form" })
   get("/payment/results", { :controller => "calculations", :action => "process_payment_form" })
 
-  # get("/random/new", { :controller => "calculations", :action => "random_form" })
+  get("/random/new", { :controller => "calculations", :action => "random_form" })
   
   # replaced ":new" with ":min/:max" below 
   # get("/random/:min/:max", { :controller => "calculations", :action => "xx" })
