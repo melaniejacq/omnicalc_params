@@ -33,7 +33,7 @@ class CalculationsController < ApplicationController
       @r = @basis_points/(12*100)
       @N = @years*12
     
-      @payment = @r*@P/(1-(1+@r)**(-@N)).round
+      @payment = @r*@P/(1-(1+@r)**(-@N)).round(2)
   #   @payment = @r*@P/(1-(1+@r)**(-@N))
     
     render("calculations/flex_payment_template.html.erb")
